@@ -10,4 +10,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Ahmed-Musa-Learning-Angular';
+  province:string = 'Nova Scotia';
+  favoriteHoliday:string = 'Bern, Switzerland';
 }
