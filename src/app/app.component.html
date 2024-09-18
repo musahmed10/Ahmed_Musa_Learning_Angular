@@ -14,13 +14,30 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Lab1</title>
+  <title>Assignment2</title>
 </head>
 <body>
-<p>Hello World!! My first Angular paragraph for Lab 1.</p>
-<p>Wish me luck!!!</p>
-<h1>About my home province of {{ province }}</h1>
-<h1>Let me tell you about {{ favoriteHoliday }}</h1>
+<h1>Ahmed's Computer Superstore</h1>
+<div *ngFor="let user of users" class="user-card">
+  <h2>{{ user.name }}</h2>
+
+  <div>
+    <p><strong>Price:</strong> ${{ user.price }}</p>
+
+
+    <p *ngIf="user.description" class="description"><strong>Description:</strong> {{ user.description }}</p>
+
+
+    <p *ngIf="user.isAvailable; else notAvailable" class="available">
+      <strong>Is product available?</strong> Yes
+    </p>
+    <ng-template #notAvailable>
+      <p class="unavailable"><strong>Is product available?</strong> No</p>
+    </ng-template>
+  </div>
+
+  <hr>
+</div>
 </body>
 </html>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

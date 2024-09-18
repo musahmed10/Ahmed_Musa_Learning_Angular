@@ -1,0 +1,59 @@
+/*H1 style*/
+h1 {
+  background-color: linen;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Container for the user card */
+.user-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+/* Header styling for user name */
+.user-card h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Styling for price */
+.user-card p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+/* Highlighting available items */
+.user-card .available {
+  color: green;
+  font-weight: bold;
+}
+
+/* Styling for unavailable items */
+.user-card .unavailable {
+  color: red;
+  font-weight: bold;
+}
+
+/* Adding a border and padding to description */
+.user-card .description {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Adding hover effect to user card */
+.user-card:hover {
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
+  transform: translateX(2%);
+}
+
+
