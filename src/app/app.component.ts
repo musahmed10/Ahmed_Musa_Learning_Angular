@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import {CommonModule} from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {User} from "./models/user";
+import { ProductListComponent } from './product-list/product-list.component'; // Adjust the path as necessary
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, ProductListComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Ahmed-Musa-Learning-Angular';

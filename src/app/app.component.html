@@ -11,35 +11,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Assignment2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 3 - Product List</title>
 </head>
 <body>
 <h1>Ahmed's Computer Superstore</h1>
-<div *ngFor="let user of users" class="user-card">
-  <h2>{{ user.name }}</h2>
-
-  <div>
-    <p><strong>Price:</strong> ${{ user.price }}</p>
-
-
-    <p *ngIf="user.description" class="description"><strong>Description:</strong> {{ user.description }}</p>
-
-
-    <p *ngIf="user.isAvailable; else notAvailable" class="available">
-      <strong>Is product available?</strong> Yes
-    </p>
-    <ng-template #notAvailable>
-      <p class="unavailable"><strong>Is product available?</strong> No</p>
-    </ng-template>
-  </div>
-
-  <hr>
-</div>
+<app-product-list [products]="users"></app-product-list>
 </body>
 </html>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
