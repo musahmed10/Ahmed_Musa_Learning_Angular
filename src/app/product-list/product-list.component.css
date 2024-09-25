@@ -1,13 +1,7 @@
-.product-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Space between items */
-  padding: 20px;
+.even-item {
+  background-color: lightpink;
 }
 
-app-product-list-item {
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+.odd-item {
+  background-color: lightblue;
 }
