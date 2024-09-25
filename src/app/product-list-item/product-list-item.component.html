@@ -1,11 +1,6 @@
 <div class="product-item">
-  <h3>{{ product.name }}</h3>
-  <p><strong>Price:</strong> ${{ product.price }}</p>
-  <p *ngIf="product.description"><strong>Description:</strong> {{ product.description }}</p>
-  <p *ngIf="product.isAvailable; else notAvailable">
-    <strong>Is product available?</strong> Yes
-  </p>
-  <ng-template #notAvailable>
-    <p><strong>Is product available?</strong> No</p>
-  </ng-template>
+  <h2>{{ product.name }}</h2>
+  <p>Price: ${{ product.price }}</p>
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <p>Status: {{ product.isAvailable ? 'Available' : 'Out of stock' }}</p>
 </div>
