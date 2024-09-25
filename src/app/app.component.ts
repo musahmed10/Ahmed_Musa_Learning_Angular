@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {RouterModule} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 
@@ -11,9 +11,6 @@ import { ProductListComponent } from './product-list/product-list.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ahmed-Musa-Learning-Angular';
-
-
   products = [
     { name: 'HP Stream', price: 1250, description: 'Quality meets sleekness', isAvailable: true },
     { name: 'HP Probook', price: 650, description: 'Efficiency for less price', isAvailable: true },

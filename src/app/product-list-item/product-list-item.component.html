@@ -1,6 +1,6 @@
-<div class="product-item">
-  <h2>{{ product.name }}</h2>
-  <p>Price: ${{ product.price }}</p>
+<div [ngClass]="{ 'even-item': isEven, 'odd-item': !isEven }">
+  <h3>{{ product.name }}</h3>
+  <p>Price: {{ product.price }}</p>
   <p *ngIf="product.description">Description: {{ product.description }}</p>
-  <p>Status: {{ product.isAvailable ? 'Available' : 'Out of stock' }}</p>
+  <p *ngIf="!product.isAvailable">Out of Stock</p>
 </div>
