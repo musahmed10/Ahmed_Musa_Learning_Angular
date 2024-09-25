@@ -1,6 +1,3 @@
-<div class="product-list">
-  <app-product-list-item></app-product-list-item>
-  <app-product-list-item></app-product-list-item>
-  <app-product-list-item></app-product-list-item>
-  <app-product-list-item></app-product-list-item>
+<div *ngFor="let product of products">
+  <app-product-list-item [product]="product"></app-product-list-item>
 </div>

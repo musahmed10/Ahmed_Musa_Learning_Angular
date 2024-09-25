@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component'; // Adjust the path as necessary
-import { User } from './models/user';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, ProductListComponent],
+  imports: [RouterModule, CommonModule, ProductListComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Ahmed-Musa-Learning-Angular';
-  users: User[] = [
-    { id: 1, name: 'HP Stream', price: 1250, description: 'Quality meets sleekness', isAvailable: true },
-    { id: 2, name: 'HP Probook', price: 650, description: 'Efficiency for less price', isAvailable: true },
-    { id: 3, name: 'HP Premium', price: 389, isAvailable: false },
-    { id: 4, name: 'HP Elitebook', price: 934, description: 'Rugged and affordable', isAvailable: true },
-    { id: 5, name: 'HP Folio', price: 693, description: 'Work and play', isAvailable: true },
-    { id: 6, name: 'HP Chromebook', price: 720, description: 'Smaller is better', isAvailable: false }
+
+
+  products = [
+    { name: 'HP Stream', price: 1250, description: 'Quality meets sleekness', isAvailable: true },
+    { name: 'HP Probook', price: 650, description: 'Efficiency for less price', isAvailable: true },
+    { name: 'HP Premium', price: 389, isAvailable: false },
+    { name: 'HP Elitebook', price: 934, description: 'Rugged and affordable', isAvailable: true }
   ];
 }
