@@ -1,20 +1,32 @@
-import { Component } from '@angular/core';
-import {RouterModule} from "@angular/router";
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from './services/product.service';
+import { Observable } from 'rxjs';
+import { Product } from './data/mock-content';
+import { ProductListItemComponent } from './product-list-item/product-list-item.component';
+import { AsyncPipe } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule, CommonModule, ProductListComponent],
   templateUrl: './app.component.html',
+  standalone: true,
+  imports: [
+    ProductListItemComponent,
+    AsyncPipe,
+    ProductListComponent,
+    RouterOutlet
+  ],
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  products = [
-    { name: 'HP Stream', price: 1250, description: 'Quality meets sleekness', isAvailable: true },
-    { name: 'HP Probook', price: 650, description: 'Efficiency for less price', isAvailable: true },
-    { name: 'HP Premium', price: 389, isAvailable: false },
-    { name: 'HP Elitebook', price: 934, description: 'Rugged and affordable', isAvailable: true }
-  ];
+export class AppComponent implements OnInit {
+  products!: Observable<Product[]>;  // Use definite assignment assertion
+  selectedProduct!: Observable<Product | undefined>;  // Use definite assignment assertion
+
+  constructor(private productService: ProductService) { }  // Inject ProductService
+
+  ngOnInit(): void {
+    this.products = this.productService.getProducts();  // Fetch products using the service
+    this.selectedProduct = this.productService.readProduct(1);
+  }
 }

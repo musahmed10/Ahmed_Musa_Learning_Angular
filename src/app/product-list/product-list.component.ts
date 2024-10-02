@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductListItemComponent } from "../product-list-item/product-list-item.component";
-import { ProductService } from '../services/product.service';  // Import the service
-import { Observable } from 'rxjs';  // Import Observable
+import { ProductListItemComponent } from '../product-list-item/product-list-item.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -11,12 +10,7 @@ import { Observable } from 'rxjs';  // Import Observable
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
-  products$: Observable<any[]> = new Observable<any[]>();  // Declare as an Observable
+export class ProductListComponent {
+  @Input() products: any[] = [];  // Declare products input without transformation
 
-  constructor(private productService: ProductService) { }  // Inject ProductService
-
-  ngOnInit(): void {
-    this.products$ = this.productService.getProducts();  // Call getProducts() to get the product list
-  }
 }

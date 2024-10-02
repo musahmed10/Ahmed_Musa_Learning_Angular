@@ -6,16 +6,16 @@ import { Product, products } from '../data/mock-content';
   providedIn: 'root'
 })
 export class ProductService {
-  private products: Product[] = products;
+  private products: Product[] = products;  // Store the products
 
+  // Get products as an Observable
   getProducts(): Observable<Product[]> {
-    return of(products);  // Return the products array as an observable
+    return of(this.products);  // Return the products array as an observable
   }
-
 
   // Method to read a product by id (you may need to modify your product data to include an id)
   readProduct(id: number): Observable<Product | undefined> {
-    const product = this.products.find((p, index) => index === id); // Assuming the id corresponds to index
+    const product = this.products[id];
     return of(product);  // Return the found product wrapped in an Observable
   }
 

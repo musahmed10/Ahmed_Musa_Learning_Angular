@@ -1,4 +1,4 @@
-<div *ngFor="let product of products$ | async; let i = index" [ngClass]="{'even-item': i % 2 === 0, 'odd-item': i % 2 !== 0}">
+<div *ngFor="let product of products; let i = index" [ngClass]="{'even-item': i % 2 === 0, 'odd-item': i % 2 !== 0}">
   <h3>{{ product.name }}</h3>
   <p>Price: {{ product.price }}</p>
   <p *ngIf="product.description">Description: {{ product.description }}</p>

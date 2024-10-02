@@ -15,8 +15,17 @@
   <title>Assignment 3 - Product List</title>
 </head>
 <body>
+
 <h1>Ahmed's Computer Superstore</h1>
-<app-product-list [products]="products"></app-product-list>
+
+<app-product-list-item
+  *ngIf="selectedProduct | async as selectedProduct"
+  [product]="selectedProduct">
+</app-product-list-item>
+
+<app-product-list [products]="(products | async) ?? []"></app-product-list>
+
+
 </body>
 </html>
 
