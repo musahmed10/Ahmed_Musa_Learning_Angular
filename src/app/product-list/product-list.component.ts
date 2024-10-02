@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListItemComponent } from "../product-list-item/product-list-item.component";
-import { products } from '../data/mock-content'; // Import the array from the new file
+import { ProductService } from '../services/product.service';  // Import the service
+import { Observable } from 'rxjs';  // Import Observable
 
 @Component({
   selector: 'app-product-list',
@@ -10,6 +11,12 @@ import { products } from '../data/mock-content'; // Import the array from the ne
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-  @Input() products = products; // Use the imported products array
+export class ProductListComponent implements OnInit {
+  products$: Observable<any[]> = new Observable<any[]>();  // Declare as an Observable
+
+  constructor(private productService: ProductService) { }  // Inject ProductService
+
+  ngOnInit(): void {
+    this.products$ = this.productService.getProducts();  // Call getProducts() to get the product list
+  }
 }
