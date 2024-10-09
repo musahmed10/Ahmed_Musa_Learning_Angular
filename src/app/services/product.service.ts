@@ -27,7 +27,7 @@ export class ProductService {
 
   // Method to update an existing product
   updateProduct(updatedProduct: Product): Observable<Product[]> {
-    const index = this.products.findIndex(p => p.name === updatedProduct.name); // Use a unique property for matching
+    const index = this.products.findIndex(p => p.name === updatedProduct.name);
     if (index !== -1) {
       this.products[index] = updatedProduct;  // Update the product
     }

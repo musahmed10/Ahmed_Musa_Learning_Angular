@@ -21,12 +21,15 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   products!: Observable<Product[]>;  // Use definite assignment assertion
-  selectedProduct!: Observable<Product | undefined>;  // Use definite assignment assertion
+  selectedProduct!: Product | undefined;  // Store the selected product
 
   constructor(private productService: ProductService) { }  // Inject ProductService
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();  // Fetch products using the service
-    this.selectedProduct = this.productService.readProduct(1);
+  }
+
+  onProductSelected(product: Product): void {
+    this.selectedProduct = product; // Update selected product
   }
 }

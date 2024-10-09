@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
-import { Product } from '../data/mock-content';
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-product-list-item',
@@ -13,7 +12,6 @@ import { Product } from '../data/mock-content';
   styleUrls: ['./product-list-item.component.css']
 })
 export class ProductListItemComponent {
-  @Input() product!: Product;  // Use Product type
+  @Input() product: any;
   @Input() isEven: boolean = false;
 }
-
