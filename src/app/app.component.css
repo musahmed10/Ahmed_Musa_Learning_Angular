@@ -1,8 +1,30 @@
-/*H1 style*/
+/* H1 style */
 h1 {
   background-color: linen;
   font-style: italic;
   text-align: center;
+  padding: 20px; /* Added padding for better spacing */
+}
+
+/* Navigation bar styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f9fa; /* Light background for the navbar */
+  padding: 10px;
+  border-bottom: 1px solid #ddd; /* Bottom border for separation */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333; /* Dark text color */
+  margin: 0 15px; /* Spacing between links */
+  font-weight: bold; /* Bold links */
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.navbar a:hover {
+  color: #007bff; /* Change color on hover */
 }
 
 /* Container for the user card */
@@ -55,5 +77,3 @@ h1 {
   transition: background-color 0.3s ease;
   transform: translateX(2%);
 }
-
-

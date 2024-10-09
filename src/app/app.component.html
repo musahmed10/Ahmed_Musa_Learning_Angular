@@ -18,16 +18,18 @@
 
 <h1>Ahmed's Computer Superstore</h1>
 
-<app-product-list-item
-  *ngIf="selectedProduct | async as selectedProduct"
-  [product]="selectedProduct">
-</app-product-list-item>
+<!-- Navigation Bar -->
+<div class="navbar">
+  <a routerLink="/products">Home</a>
+  <a routerLink="/modify-product">Modify Product</a>
+</div>
 
-<app-product-list [products]="(products | async) ?? []"></app-product-list>
-
+<router-outlet></router-outlet> <!-- This will dynamically load the routed components -->
 
 </body>
 </html>
+
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
