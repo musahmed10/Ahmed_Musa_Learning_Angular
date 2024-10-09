@@ -11,6 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  @Input() products: any[] = [];  // Declare products input without transformation
+  @Input() products: any[] = [];  // Declare products input witout transformation
 
 }
