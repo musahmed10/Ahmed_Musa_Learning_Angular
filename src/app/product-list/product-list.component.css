@@ -5,3 +5,8 @@
 .odd-item {
   background-color: lightblue;
 }
+.product-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
