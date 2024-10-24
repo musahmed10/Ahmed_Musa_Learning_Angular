@@ -1,1 +1,44 @@
-<p>modify-list-item works!</p>
+<form [formGroup]="modifyForm" (ngSubmit)="onSubmit()">
+  <!-- Name Field -->
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+    <div *ngIf="modifyForm.get('name')?.invalid && modifyForm.get('name')?.touched">
+      <small *ngIf="modifyForm.get('name')?.errors?.['required']">Name is required</small>
+    </div>
+  </div>
+
+  <!-- Price Field -->
+  <div>
+    <label for="price">Price:</label>
+    <input id="price" type="number" formControlName="price" />
+    <div *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">
+      <small *ngIf="modifyForm.get('price')?.errors?.['required']">Price is required</small>
+      <small *ngIf="modifyForm.get('price')?.errors?.['min']">Price must be > or = to 0</small>
+    </div>
+  </div>
+
+  <!-- Description Field -->
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <!-- Availability Checkbox -->
+  <div>
+    <label for="isAvailable">Available:</label>
+    <input id="isAvailable" type="checkbox" formControlName="isAvailable" />
+  </div>
+
+  <!-- Image URL Field -->
+  <div>
+    <label for="imageUrl">Image URL:</label>
+    <input id="imageUrl" formControlName="imageUrl" />
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="modifyForm.invalid">Save</button>
+
+  <!-- Reset Form Button -->
+  <button type="button" (click)="onReset()">Reset</button>
+</form>

@@ -7,5 +7,9 @@
 
     <!-- Add the image here -->
     <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+
+    <!-- I want the buttons to only appear on the list view -->
+    <button (click)="editProduct(product)">Edit</button>
+    <button (click)="deleteProduct(i)">Delete</button>
   </div>
 </div>
