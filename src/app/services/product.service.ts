@@ -8,6 +8,7 @@ import { Product, products } from '../data/mock-content';
 export class ProductService {
   private products: Product[] = products;  // Store the products
 
+  // CRUD
   // Get products as an Observable
   getProducts(): Observable<Product[]> {
     return of(this.products);  // Return the products array as an observable
