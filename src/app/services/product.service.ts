@@ -16,6 +16,11 @@ export class ProductService {
     return of(this.products);
   }
 
+  // Get products without an observable
+  getProductsSync(): Product[] {
+    return this.products;
+  }
+
   // Set the product to be edited
   setProductToEdit(product: Product) {
     this.productToEdit = product;

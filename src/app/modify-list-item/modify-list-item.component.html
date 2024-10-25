@@ -5,6 +5,8 @@
     <input id="name" formControlName="name" />
     <div *ngIf="modifyForm.get('name')?.invalid && modifyForm.get('name')?.touched">
       <small *ngIf="modifyForm.get('name')?.errors?.['required']">Name is required</small>
+      <small *ngIf="modifyForm.get('name')?.errors?.['specialChars']">Name cannot contain special characters (#, ?, !)</small>
+      <small *ngIf="modifyForm.errors?.['duplicate']">Product name must be unique</small>
     </div>
   </div>
 
@@ -14,7 +16,8 @@
     <input id="price" type="number" formControlName="price" />
     <div *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">
       <small *ngIf="modifyForm.get('price')?.errors?.['required']">Price is required</small>
-      <small *ngIf="modifyForm.get('price')?.errors?.['min']">Price must be > or = to 0</small>
+      <small *ngIf="modifyForm.get('price')?.errors?.['min']">Price must be a positive number</small>
+      <small *ngIf="modifyForm.get('price')?.errors?.['pattern']">Price must be a valid number</small>
     </div>
   </div>
 

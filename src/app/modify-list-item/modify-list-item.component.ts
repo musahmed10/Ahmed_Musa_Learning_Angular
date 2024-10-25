@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  ReactiveFormsModule
+} from '@angular/forms';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../data/mock-content';
 
 @Component({
   selector: 'app-modify-list-item',
+  templateUrl: './modify-list-item.component.html',
   standalone: true,
   imports: [
-    FormsModule,
     ReactiveFormsModule
-   ],
-  templateUrl: './modify-list-item.component.html',
+  ],
   styleUrls: ['./modify-list-item.component.css']
 })
 export class ModifyListItemComponent implements OnInit {
@@ -26,16 +32,16 @@ export class ModifyListItemComponent implements OnInit {
   ) {
     // Initialize form
     this.modifyForm = this.fb.group({
-      name: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(0)]],
+      name: ['', [Validators.required, this.noSpecialChars]],
+      // Validator for price to have only positive numbers
+      price: ['', [Validators.required, Validators.min(0), Validators.pattern('^[0-9]*$')]],
       description: [''],
       isAvailable: [false],
       imageUrl: ['']
-    });
+    }, { validators: [this.uniqueProductName.bind(this)] });
   }
 
   ngOnInit(): void {
-
     const productToEdit = this.productService.getProductToEdit();
     if (productToEdit) {
       this.isEditMode = true;
@@ -43,6 +49,22 @@ export class ModifyListItemComponent implements OnInit {
 
       this.modifyForm.patchValue(productToEdit);
     }
+  }
+
+  // Validator for product names to not contain special characters
+  noSpecialChars(control: AbstractControl): ValidationErrors | null {
+    const specialChars = /[#?!]/;
+    if (specialChars.test(control.value)) {
+      return { specialChars: true };
+    }
+    return null;
+  }
+
+  // Validator that ensures product name is unique
+  uniqueProductName(control: AbstractControl): ValidationErrors | null {
+    const existingProducts = this.productService.getProductsSync();
+    const isDuplicate = existingProducts.some(product => product.name === control.get('name')?.value);
+    return isDuplicate ? { duplicate: true } : null;
   }
 
   // Method to handle form submission
@@ -78,7 +100,7 @@ export class ModifyListItemComponent implements OnInit {
     }
   }
 
-  //Let's reset the form
+  // Reset the form
   onReset() {
     this.modifyForm.reset();
   }
