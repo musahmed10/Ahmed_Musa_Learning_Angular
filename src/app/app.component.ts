@@ -5,7 +5,7 @@ import { Product } from './data/mock-content';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { AsyncPipe } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,8 @@ import { RouterOutlet } from '@angular/router';
     ProductListItemComponent,
     AsyncPipe,
     ProductListComponent,
-    RouterOutlet
+    RouterOutlet,
+    RouterLink
   ],
   styleUrls: ['./app.component.css']
 })

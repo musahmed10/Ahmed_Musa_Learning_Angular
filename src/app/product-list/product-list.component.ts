@@ -4,6 +4,7 @@ import { ProductListItemComponent } from '../product-list-item/product-list-item
 import { Observable } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Product } from '../data/mock-content';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -13,11 +14,25 @@ import { Product } from '../data/mock-content';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products$!: Observable<Product[]>;  // Observable for products
+  products$!: Observable<Product[]>;
 
-  constructor(private productService: ProductService) {}  // Inject ProductService
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts();  // Fetch products using ProductService
+    this.products$ = this.productService.getProducts();
+  }
+
+
+  editProduct(product: Product) {
+    this.productService.setProductToEdit(product);
+    this.router.navigate(['/modify-product']);
+  }
+
+
+  deleteProduct(index: number) {
+    this.productService.deleteProduct(index).subscribe(() => {
+      // To refresh the list
+      this.products$ = this.productService.getProducts();
+    });
   }
 }
