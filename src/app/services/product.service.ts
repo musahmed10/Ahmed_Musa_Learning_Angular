@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Product, products } from '../data/mock-content';
+import { Observable, throwError } from 'rxjs';
+import { Product } from '../data/mock-content';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products: Product[] = products;
+  private apiUrl = 'api/products'; //url to web api
   private productToEdit: Product | null = null;
 
-  // CRUD
+  constructor(private http: HttpClient) {} // We Inject the HttpClient
+
+  // CRUD with HTTP requests
 
   // Get products as an Observable
   getProducts(): Observable<Product[]> {
-    return of(this.products);
+    return this.http.get<Product[]>(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Get products without an observable
+  // Get products without an observable (no HTTP call needed)
   getProductsSync(): Product[] {
-    return this.products;
+    return [];
   }
 
   // Set the product to be edited
@@ -31,27 +37,31 @@ export class ProductService {
     return this.productToEdit;
   }
 
-  // Method to create a new product
-  createProduct(newProduct: Product): Observable<Product[]> {
-    this.products.push(newProduct);
-    return of(this.products);
+  // Create a new product
+  createProduct(newProduct: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, newProduct).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Method to update an existing product
-  updateProduct(updatedProduct: Product): Observable<Product[]> {
-    const index = this.products.findIndex(p => p.name === updatedProduct.name);
-    if (index !== -1) {
-      this.products[index] = updatedProduct;
-    }
-    return of(this.products);
+  // Update an existing product
+  updateProduct(updatedProduct: Product): Observable<Product> {
+    return this.http.put<Product>(this.apiUrl, updatedProduct).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Method to delete a product by index
-  deleteProduct(index: number): Observable<Product | undefined> {
-    if (index >= 0 && index < this.products.length) {
-      const removedProduct = this.products.splice(index, 1)[0];
-      return of(removedProduct);
-    }
-    return of(undefined);
+  // Delete a product by name
+  deleteProduct(name: string): Observable<{}> {
+    const url = `${this.apiUrl}/${name}`;
+    return this.http.delete(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Handle API errors
+  private handleError(error: HttpErrorResponse) {
+    console.error('API error:', error);
+    return throwError(() => new Error('Server error, please try again.'));
   }
 }
