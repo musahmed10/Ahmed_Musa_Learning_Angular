@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   products$!: Observable<Product[]>;
+  errorMessage: string | null = null; // Property to hold error messages
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -22,17 +23,22 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.productService.getProducts();
   }
 
-
   editProduct(product: Product) {
     this.productService.setProductToEdit(product);
     this.router.navigate(['/modify-product']);
   }
 
-
   deleteProduct(index: number) {
-    this.productService.deleteProduct(index).subscribe(() => {
-      // To refresh the list
-      this.products$ = this.productService.getProducts();
+    this.productService.deleteProduct(index).subscribe({
+      next: () => {
+
+        this.products$ = this.productService.getProducts();
+        this.errorMessage = null; // Clear any previous error messages
+      },
+      error: (err) => {
+        this.errorMessage = 'Sorry, it failed to delete product: ' + err.message;
+      }
     });
   }
 }
+

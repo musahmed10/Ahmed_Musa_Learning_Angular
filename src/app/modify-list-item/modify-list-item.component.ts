@@ -10,13 +10,15 @@ import {
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../data/mock-content';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-modify-list-item',
   templateUrl: './modify-list-item.component.html',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf
   ],
   styleUrls: ['./modify-list-item.component.css']
 })

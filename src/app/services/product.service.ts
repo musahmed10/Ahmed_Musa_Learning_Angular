@@ -51,9 +51,9 @@ export class ProductService {
     );
   }
 
-  // Delete a product by name
-  deleteProduct(name: string): Observable<{}> {
-    const url = `${this.apiUrl}/${name}`;
+  // Delete a product by index
+  deleteProduct(index: number): Observable<{}> {
+    const url = `${this.apiUrl}/${index}`;
     return this.http.delete(url).pipe(
       catchError(this.handleError)
     );
