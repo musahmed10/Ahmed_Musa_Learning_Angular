@@ -5,11 +5,12 @@ import { Observable } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Product } from '../data/mock-content';
 import { Router } from '@angular/router';
+import {FiftyPercentPromoPipe} from "../pipes/fifty-percent-promo.pipe";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductListItemComponent],
+  imports: [CommonModule, ProductListItemComponent, FiftyPercentPromoPipe],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
