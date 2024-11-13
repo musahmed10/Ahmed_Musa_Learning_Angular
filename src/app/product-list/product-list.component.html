@@ -1,14 +1,15 @@
 <div *ngIf="products$ | async as productList">
-  <div *ngFor="let product of productList; let i = index" [ngClass]="{'even-item': i % 2 === 0, 'odd-item': i % 2 !== 0}">
+  <div *ngFor="let product of productList; let i = index"
+       [ngClass]="{'even-item': i % 2 === 0, 'odd-item': i % 2 !== 0}">
     <h3>{{ product.name | uppercase}}</h3>
     <p>Price: {{ product | fiftyPercentPromo | currency: 'CAD'}}</p>
     <p *ngIf="product.description">Description: {{ product.description | lowercase}}</p>
-    <p *ngIf="!product.isAvailable">Out of Stock</p>
+    <p *ngIf="!product.isAvailable" [ngClass]="product.isAvailable | availabilityColors">Out of Stock</p>
 
     <!-- Add the image here -->
     <img *ngIf="product.imageUrl" [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
 
-    <!-- I want the buttons to only appear on the list view -->
+    <!-- Buttons for the list view -->
     <button (click)="editProduct(product)">Edit</button>
     <button (click)="deleteProduct(i)">Delete</button>
   </div>
