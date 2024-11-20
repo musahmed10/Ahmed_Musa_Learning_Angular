@@ -2,7 +2,7 @@
   <!-- Name Field -->
   <div>
     <label for="name">Name:</label>
-    <input id="name" formControlName="name" />
+    <input id="name" formControlName="name" appHighlightOnFocus [appHoverHighlight]="'lightblue'"/>
     <div *ngIf="modifyForm.get('name')?.invalid && modifyForm.get('name')?.touched">
       <small *ngIf="modifyForm.get('name')?.errors?.['required']">Name is required</small>
       <small *ngIf="modifyForm.get('name')?.errors?.['specialChars']">Name cannot contain special characters (#, ?, !)</small>

@@ -10,13 +10,17 @@ import {
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../data/mock-content';
+import {AutoFocusDirective} from "../directives/highlight-on-focus.directive";
+import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 
 @Component({
   selector: 'app-modify-list-item',
   templateUrl: './modify-list-item.component.html',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoFocusDirective,
+    HoverHighlightDirective
   ],
   styleUrls: ['./modify-list-item.component.css']
 })
