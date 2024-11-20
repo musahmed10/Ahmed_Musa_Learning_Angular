@@ -1,5 +1,5 @@
 <div *ngIf="products$ | async as productList">
-  <div *ngFor="let product of productList; let i = index"
+  <div *ngFor="let product of productList; let i = index" [routerLink]="['/products',product.name ]" [appHoverHighlight]="'grey'"
        [ngClass]="{'even-item': i % 2 === 0, 'odd-item': i % 2 !== 0}">
     <h3>{{ product.name | uppercase}}</h3>
     <p>Price: {{ product | fiftyPercentPromo | currency: 'CAD'}}</p>
