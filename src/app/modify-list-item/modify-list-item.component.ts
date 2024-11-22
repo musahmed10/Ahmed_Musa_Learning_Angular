@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 import { Product } from '../data/mock-content';
 import {AutoFocusDirective} from "../directives/highlight-on-focus.directive";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
+import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -20,7 +23,11 @@ import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
   imports: [
     ReactiveFormsModule,
     AutoFocusDirective,
-    HoverHighlightDirective
+    HoverHighlightDirective,
+    MatInputModule,
+    MatCheckboxModule,
+    MatBadgeModule,
+
   ],
   styleUrls: ['./modify-list-item.component.css']
 })

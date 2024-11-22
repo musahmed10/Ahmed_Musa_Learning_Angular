@@ -1,7 +1,7 @@
 <form [formGroup]="modifyForm" (ngSubmit)="onSubmit()">
   <!-- Name Field -->
   <div>
-    <label for="name">Name:</label>
+    <label matBadge="*" matBadgeOverlap="false" class="demo-section" for="name">Name:</label>
     <input id="name" formControlName="name" appHighlightOnFocus [appHoverHighlight]="'lightblue'"/>
     <div *ngIf="modifyForm.get('name')?.invalid && modifyForm.get('name')?.touched">
       <small *ngIf="modifyForm.get('name')?.errors?.['required']">Name is required</small>
@@ -11,26 +11,28 @@
   </div>
 
   <!-- Price Field -->
+
   <div>
-    <label for="price">Price:</label>
-    <input id="price" type="number" formControlName="price" />
+    <mat-label matBadge="*" matBadgeOverlap="false" class="demo-section">Price:</mat-label>
+    <input id="price" matInput type="number" formControlName="price" placeholder="0"/>
     <div *ngIf="modifyForm.get('price')?.invalid && modifyForm.get('price')?.touched">
       <small *ngIf="modifyForm.get('price')?.errors?.['required']">Price is required</small>
       <small *ngIf="modifyForm.get('price')?.errors?.['min']">Price must be a positive number</small>
       <small *ngIf="modifyForm.get('price')?.errors?.['pattern']">Price must be a valid number</small>
+      </div>
     </div>
-  </div>
+
 
   <!-- Description Field -->
   <div>
     <label for="description">Description:</label>
-    <textarea id="description" formControlName="description"></textarea>
+    <textarea id="description" formControlName="description" matInput placeholder="write a description..."></textarea>
   </div>
 
   <!-- Availability Checkbox -->
   <div>
     <label for="isAvailable">Available:</label>
-    <input id="isAvailable" type="checkbox" formControlName="isAvailable" />
+    <mat-checkbox id="isAvailable" type="checkbox" formControlName="isAvailable" />
   </div>
 
   <!-- Image URL Field -->
@@ -40,7 +42,8 @@
   </div>
 
   <!-- Submit Button -->
-  <button type="submit" [disabled]="modifyForm.invalid">Save</button>
+
+  <button type="submit" [disabled]="modifyForm.invalid" >Save</button>
 
   <!-- Reset Form Button -->
   <button type="button" (click)="onReset()">Reset</button>
