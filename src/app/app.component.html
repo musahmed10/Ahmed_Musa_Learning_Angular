@@ -19,10 +19,12 @@
 <h1>Ahmed's Computer Superstore</h1>
 
 <!-- Navigation Bar -->
-<div class="navbar">
-  <a routerLink="/products">Home</a>
-  <a routerLink="/modify-product">Modify Product</a>
-</div>
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/products"
+          routerLinkActive="active">Home</button>
+  <button mat-button routerLink="/modify-product"
+          routerLinkActive="active">Modify Product</button>
+</mat-toolbar>
 
 <router-outlet></router-outlet> <!-- This will dynamically load the routed components -->
 

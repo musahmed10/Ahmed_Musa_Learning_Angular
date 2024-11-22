@@ -15,6 +15,9 @@ import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
 import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatBadgeModule} from "@angular/material/badge";
+import {NgIf} from "@angular/common";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-modify-list-item',
@@ -27,6 +30,9 @@ import {MatBadgeModule} from "@angular/material/badge";
     MatInputModule,
     MatCheckboxModule,
     MatBadgeModule,
+    NgIf,
+    MatTooltipModule,
+    MatButtonModule,
 
   ],
   styleUrls: ['./modify-list-item.component.css']
