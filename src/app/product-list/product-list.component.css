@@ -16,3 +16,11 @@
 }
 
 
+mat-paginator {
+  color: darkolivegreen;
+  margin-right: 380px;
+}
+
+mat-icon {
+  color: red;
+}

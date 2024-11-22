@@ -8,11 +8,16 @@ import {Router, RouterLink} from '@angular/router';
 import {FiftyPercentPromoPipe} from "../pipes/fifty-percent-promo.pipe";
 import {AvailabilityColorsPipe} from "../pipes/availability-colors.pipe";
 import {HoverHighlightDirective} from "../directives/hover-highlight.directive";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductListItemComponent, FiftyPercentPromoPipe, AvailabilityColorsPipe, HoverHighlightDirective, RouterLink],
+  imports: [CommonModule, ProductListItemComponent, FiftyPercentPromoPipe, AvailabilityColorsPipe, HoverHighlightDirective, RouterLink, MatPaginatorModule, MatButtonModule, MatIconModule, MatListModule, MatCardModule],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
